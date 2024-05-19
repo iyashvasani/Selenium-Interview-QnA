@@ -1,0 +1,689 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Selenium Interview Q&amp;A</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="428039be-acf6-4ffb-9405-eb3bcd1ec5f3" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📝</span></div><h1 class="page-title">Selenium Interview Q&amp;A</h1><p class="page-description"></p></header><div class="page-body"><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">1. What are the Selenium suite components?</summary><div class="indented"><ul id="26b71e45-a69c-44c5-8346-a5e9222796b5" class="bulleted-list"><li style="list-style-type:disc">Selenium IDE<br/>It is a Firefox/Chrome plug-in that was developed to speed up the creation of automation scripts. It records the user actions on the web browser and exports them as a reusable script<br/></li></ul><ul id="6dcf7e44-732c-4613-9ea7-16224536b933" class="bulleted-list"><li style="list-style-type:disc">Selenium Remote Control (RC)<br/>RC is a server that allows users to write application tests in various programming languages. The commands from the test script are accepted by this server and are sent to the browser as Selenium core JavaScript commands. The browser then behaves accordingly<br/></li></ul><ul id="daae39e8-6179-492f-8a11-a37cd24323f3" class="bulleted-list"><li style="list-style-type:disc">Selenium WebDriver<br/>WebDriver is a programming interface that helps create and run test cases. It makes provision to act on web elements. Unlike RC, WebDriver does not require an additional server and interacts natively with the browser applications<br/></li></ul><ul id="e9949a88-8589-49ab-9220-b6744f03c9f7" class="bulleted-list"><li style="list-style-type:disc">Selenium Grid<br/>Grid was designed to distribute commands to different machines simultaneously. It allows the parallel execution of tests on different browsers and different operating systems. It is exceptionally flexible and is integrated with other suite components for simultaneous execution<br/></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">2. What are the limitations of Selenium?</summary><div class="indented"><ul id="b659eea6-8db9-4a27-bcad-1a67a1ed05c2" class="bulleted-list"><li style="list-style-type:disc">No reliable tech support</li></ul><ul id="7d89175a-7483-401a-acdf-b5ec07973d65" class="bulleted-list"><li style="list-style-type:disc">Tests only web applications</li></ul><ul id="13d340a7-3de1-4442-9502-0ca995221323" class="bulleted-list"><li style="list-style-type:disc">Limited support for image testing</li></ul><ul id="fbfa1745-5cb7-415a-b2d7-f36d21f941dd" class="bulleted-list"><li style="list-style-type:disc">No built-in reporting facility</li></ul><ul id="a1585f99-0a2e-4895-b499-8dda60b1dd3c" class="bulleted-list"><li style="list-style-type:disc">Limited test management</li></ul><ul id="c514dbf7-5398-4ae9-83af-5d7a21bf47b8" class="bulleted-list"><li style="list-style-type:disc">May require knowledge of programming languages</li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">3. What are the testing types supported by Selenium?</summary><div class="indented"><h3 id="f39f464a-d556-4d7e-b272-310749401180" class="">Selenium supports Regression testing and Functional testing</h3><ol type="1" id="1c58e9e7-f15d-43d4-8f98-1bbc2edd6cb7" class="numbered-list" start="1"><li><strong>Regression Testing</strong> is a full or partial selection of already executed test cases which are re-executed to ensure existing functionalities work fine.<figure id="a2082cfd-be1b-4c48-b757-942b348e2108" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled.png"><img style="width:1166px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled.png"/></a></figure><ul id="e9795a13-1d22-44b0-bc73-2f23deb8c4fe" class="bulleted-list"><li style="list-style-type:disc">Re-testing<ul id="108b5734-1611-4da1-9a94-b20bcc605ce9" class="bulleted-list"><li style="list-style-type:circle">All tests in the existing test suite are executed</li></ul><ul id="c5fd9444-15ee-4a67-8f12-fab175bdd621" class="bulleted-list"><li style="list-style-type:circle">Very expensive and time-consuming</li></ul></li></ul><ul id="459db341-cc93-40cc-bf4f-c6d2e94b11ff" class="bulleted-list"><li style="list-style-type:disc">Regression test selection<ul id="d6c753c3-4279-4f04-847d-39747110e8c1" class="bulleted-list"><li style="list-style-type:circle">Tests are classified as Feature tests, Integration tests, End to End tests. Some of these tests are selected</li></ul></li></ul><ul id="ef810a31-4f2f-48d3-b622-4313f93c395d" class="bulleted-list"><li style="list-style-type:disc">Prioritization of test cases<ul id="9913b66d-9a13-4583-9a47-cc05f6c37199" class="bulleted-list"><li style="list-style-type:circle">The selected test cases are prioritized based on business impact and critical functionalities</li></ul></li></ul></li></ol><ol type="1" id="098f7aef-a430-49aa-a297-163afb0d14fb" class="numbered-list" start="2"><li><strong>Functional Testing</strong> involves the verification of every function of the<br/>application with the required specification.<br/></li></ol><figure id="01e0d2d5-5cca-4bfa-8ae5-89103da51fc5" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%201.png"><img style="width:1218px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%201.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">4. What are Selenium 2.0 and Selenium 3.0?</summary><div class="indented"><figure id="4cc80f0a-965a-4aec-ade9-a8ee37a072ff" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%202.png"><img style="width:912px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%202.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">5. What is Same Origin policy? How is it handled?</summary><div class="indented"><p id="bc9a5e47-371a-4c7e-bc2a-887aa884d0aa" class="">Same Origin policy is a feature adopted for security purposes. According to this policy, a web browser allows scripts from one webpage to access the contents of another webpage provided both the pages have the same origin.</p><p id="dc2a32df-c960-4e3b-a98a-901face436f0" class="">Origin is a combination of URL scheme, hostname and port number. Same Origin policy prevents a malicious script on one page to access sensitive data on another webpage</p><figure id="fb5ba52b-441c-4d7e-8170-2d9bf4ccec93" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%203.png"><img style="width:1628px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%203.png"/></a></figure><figure id="47552abd-c585-4074-8c02-417af59622ac" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%204.png"><img style="width:1628px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%204.png"/></a></figure><p id="2cde26d5-471e-4b07-8f40-db5ae77e8e7b" class="">It was handled using Selenium RC</p><figure id="e8460464-2545-46cc-a54c-cb933ddfa279" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%205.png"><img style="width:680px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%205.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">6. What is Selenese? How is it classified?</summary><div class="indented"><p id="89f1c9ce-0edb-4e8d-b466-70ec648de7a4" class="">Selenese is the set of Selenium commands which are used to test your web application. Tester can test the broken links, the existence of some object on the UI, Ajax functionality, alerts, window, list options and a lot more using Selenese.</p><figure id="0854ef69-7ca7-4c05-963b-aacf73e21891" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%206.png"><img style="width:1566px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%206.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">7. Mention the types of web locators.</summary><div class="indented"><p id="de887d50-bb6f-40fb-a8bb-a2677713f63b" class="">Locator is a command that tells Selenium IDE which GUI elements ( say Text Box, Buttons, Check Boxes etc) it needs to operate on. Locators specify the area of action</p><p id="3ae8b8ee-df1a-4d24-bf0a-f95502e8d929" class=""><strong>Locator by ID: </strong>It takes a parameter of String which is a Value of ID attribute and it returns the object to findElement() method.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5f888ed9-cb4b-4770-b8a3-96ceb2b37050" class="code"><code class="language-Java">driver.findElement(By.id(&quot;user&quot;));</code></pre><p id="2095c60d-891c-4bc0-bb49-c0488fed8c60" class=""><strong>Locator by link:</strong> If your targeted element is link text then you can use by link text element locator to locate that element</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="673dc8bb-5b88-49a5-a05e-214d6e104f55" class="code"><code class="language-Java">driver.findElement(By.linkText(&quot;Today&#x27;s deals&quot;)).click();</code></pre><p id="1a42bf92-55a3-4586-91d3-2404e0b50fb6" class=""><strong>Locator by Partial link:</strong> The target link can be located using a portion of text in a link text element.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="253d9a06-ca78-400e-b930-878db69937b2" class="code"><code class="language-Java">driver.findElement(By.linkText(&quot;Service&quot;)).click();</code></pre><p id="bdd5cd7f-d934-4c59-84a0-3e7f90c1b283" class=""><strong>Locator by Name:</strong> The first element with the name attribute value matching the location will be returned</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="106625b7-41ad-4c99-9027-ade000adce38" class="code"><code class="language-Java">driver.findElement(By.name(&quot;books&quot;).click());</code></pre><p id="0ace7ced-f758-4e8a-bf31-354238e06147" class=""><strong>Locator by TagName:</strong> Locates all the elements with the matching tag name</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21cb9540-2006-472d-90bc-810d9d16ca9a" class="code"><code class="language-Java">driver.findElement(By.tagName(&quot;button&quot;).click());</code></pre><p id="61fc5f06-ee9d-4ef5-aa59-dc5c9a05b3f9" class=""><strong>Locator by classname:</strong> This finds elements based on the value of the CLASS attribute. If an element has many classes then this will match against each of them.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7f37ee66-347f-4e8f-9535-e9afda2b6cbe" class="code"><code class="language-Java">driver.findElement(By.className((&quot;inputtext&quot;));</code></pre><p id="1652828b-c3a2-4341-adbf-5fa428b643d8" class=""><strong>Locator by XPath:</strong> It takes a parameter of String which is an XPATHEXPRESSION and it returns an object to the findElement() method</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="376eb936-3c81-49b3-8aff-d6f3c7835252" class="code"><code class="language-Java">driver.findElement(By.xpath(&quot;//span[ contains (text(),&#x27;an account&#x27;)]&quot;)).getText();</code></pre><p id="a648ae51-fc10-4f93-887a-5a74da45fb88" class=""><strong>Locator by CSS Selector:</strong> Locates elements based on the driver&#x27;s underlying CSS selector engine.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f71f7c5c-649d-44db-81bb-8d83ace292a3" class="code"><code class="language-Java">driver.findElement(By.cssSelector(&quot;input#email&quot;)).sendKeys(&quot;myemail@email.com&quot;);</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">8. What are the types of waits supported by WebDriver?</summary><div class="indented"><p id="e607dced-1848-4bf3-9b17-18ddfbc756c7" class="">There are three types of waits:</p><ol type="1" id="4e6aba86-2ace-4bab-9352-61b2895b9d74" class="numbered-list" start="1"><li><strong>Implicit wait</strong> basically tells Selenium to wait for a certain amount of time before throwing a &quot;No such element&quot; exception.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a2164b1a-eabf-4c49-a9fa-cd5db201a980" class="code"><code class="language-Java">driver.manage().timeouts().implicitlywait(TimeOut, TimeUnit.SECONDS);</code></pre></li></ol><ol type="1" id="a434004a-080d-4683-8716-3994c2549181" class="numbered-list" start="2"><li><strong>Explicit wait </strong>is used to tell the Web Driver to wait for certain conditions before throwing an &quot;ElementNotVisibleException&quot; exception.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b211ac88-9f6b-49e7-8d7c-fc9a308d724c" class="code"><code class="language-Java">WebDriverWait wait = new WebDriverWait(WebDriver Reference, TimeOut);</code></pre></li></ol><ol type="1" id="a12e51e9-686d-41f7-989b-1f9ccf78da06" class="numbered-list" start="3"><li><strong>Fluent wait</strong> is used to tell the web driver to wait for a condition, as well as the frequency with which we want to check the condition before throwing an &quot;ElementNotVisibleException&quot; exception.</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="75cd2a6e-5b26-4013-99c1-fb930a9c84ad" class="code"><code class="language-Java">Wait wait = new FluentWait(WebDriver reference).withTimeout((timeout, SECONDS).pollingEvery(timeout, SECONDS).ignoring(Exception.class);</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">9. Mention the types of navigation commands</summary><div class="indented"><ul id="ea8651f3-192c-48b4-89fa-269df47c88d1" class="bulleted-list"><li style="list-style-type:disc">Navigates to the provided URL</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="671d4bff-0938-49d1-bf34-5dfd7565d7c7" class="code"><code class="language-Java">driver.navigate().to(&quot;https://www.ebay.in/&quot;);</code></pre><ul id="9fa941e1-750a-49a5-b7b6-a44be720781c" class="bulleted-list"><li style="list-style-type:disc">This method <strong>Refresh</strong> the current page</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3e15f400-4d5a-4bb3-9fac-a6071462192f" class="code"><code class="language-Java">driver.navigate().refresh();</code></pre><ul id="9ea85b81-1472-48ca-a587-461bc3dbea4a" class="bulleted-list"><li style="list-style-type:disc">This method does the same operation as clicking on the <strong>Forward Button</strong> of any browser. It neither accepts nor returns anything</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6097be58-e177-425f-958e-33c7ac66c8f9" class="code"><code class="language-Java">driver.navigate().forward();</code></pre><ul id="fae4e2d6-314d-4ec4-a354-682f143540cf" class="bulleted-list"><li style="list-style-type:disc">This method does the same operation as clicking on the <strong>Back Button</strong> of any browser. It neither accepts nor returns anything</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e84e1957-488e-4719-8457-0607d626dc9c" class="code"><code class="language-Java">driver.navigate().back();</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">10. What is the major difference between driver.close() and driver.quit()?</summary><div class="indented"><ul id="b2e37b7c-750f-41c8-b95e-58dacc2f2f3a" class="bulleted-list"><li style="list-style-type:disc">This command closes the browser&#x27;s current window. If multiple windows are open, the current window of focus will be closed.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bdd99148-d5d6-4789-93a4-12f02762ae83" class="code"><code class="language-Java">driver.close()</code></pre><ul id="4c620e97-2f82-43f7-b4a1-7fdd2143cba6" class="bulleted-list"><li style="list-style-type:disc">If quit() is called on the driver instance and there are one or more browser windows open, it closes all the open browser windows.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="121ee2e5-12c0-454d-900c-563a12145387" class="code"><code class="language-Java">driver.quit()</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">11. How to type text in an input box using Selenium?</summary><div class="indented"><figure id="c20e4b2b-2b0b-474a-8c7c-b806b8fa4a47" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%207.png"><img style="width:680px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%207.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">12. How to click on a hyperlink in Selenium?</summary><div class="indented"><p id="430f6e26-bbd1-4bbf-a23a-0af901c7c20b" class="">The command finds the element using link text and then clicks on that element and thus<br/>the user would be re-directed to the corresponding page.<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8028b15e-77f9-42bd-90a5-c3bfe73c05a9" class="code"><code class="language-Java">driver.findElement(By.linkText(&quot;Today&#x27;s deals&quot;)).click();</code></pre><p id="9cd9e40c-d699-49a4-89ca-2d1e3a2f11ee" class="">The above command finds the element based on the substring of the link provided in the<br/>parenthesis and thus partialLinkText() finds the web element.<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="71925ac6-9746-4039-9ee8-29a35cee0f73" class="code"><code class="language-Java">driver.findElement(By.partialLinkText(&quot;Service&quot;)).click();</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">13. How to scroll down a page using JavaScript?</summary><div class="indented"><figure id="1129ad38-3132-43d7-93a7-691e444aacc6" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%208.png"><img style="width:1462px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%208.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">14. How to assert the title of a webpage?</summary><div class="indented"><figure id="7ec21fc7-88cd-46e1-8908-1f1d06dcc480" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%209.png"><img style="width:708px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%209.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">15. How to mouse hover over a web element?</summary><div class="indented"><figure id="2ed1506f-08c6-4a3b-b723-3968ca9e20bd" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2010.png"><img style="width:1574px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2010.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">16. How to retrieve CSS properties of an element?</summary><div class="indented"><figure id="509fe2cc-ab3e-4496-8bc6-5c23802a02ad" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2011.png"><img style="width:684px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2011.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">17. What is РОМ (Page Object Model)?</summary><div class="indented"><ul id="6ff6c06e-ab93-4d37-ab91-8694c3699df2" class="bulleted-list"><li style="list-style-type:disc">Page Object Model is a design pattern that helps create object repositories for the web elements</li></ul><ul id="0927f847-9667-4252-81c0-93adf5cca1ce" class="bulleted-list"><li style="list-style-type:disc">Every webpage of the application has a corresponding page class that is responsible for locating the web elements and performing actions on them</li></ul><ul id="328f3213-820e-4d62-99d6-eeaeb187bfde" class="bulleted-list"><li style="list-style-type:disc">POM improves code re-usability and readability. Multiple test cases can be run on the object repository</li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">18. Can a captcha be automated?</summary><div class="indented"><ul id="3f423414-8547-4d0a-8628-29d23f6267a6" class="bulleted-list"><li style="list-style-type:disc">Captcha is a security feature that prevents bots and automated programs from accessing sensitive information</li></ul><ul id="8e8c0d48-d8fa-4f8b-8e47-ce887d25e9fa" class="bulleted-list"><li style="list-style-type:disc">No, Selenium cannot automate Captcha</li></ul><ul id="8f7cdec4-18a2-43d2-8768-5487b4bf0d05" class="bulleted-list"><li style="list-style-type:disc">The automation test engineer has to manually type the captcha while other fields can be filled automatically</li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">19. How does Selenium handle Windows-based pop-ups?</summary><div class="indented"><ul id="d9eedde3-7a8a-455b-b269-c9cadcfd1e36" class="bulleted-list"><li style="list-style-type:disc">Selenium was designed to handle web applications. Windows-based features are not<br/>natively supported by Selenium.<br/></li></ul><ul id="b55ccba5-c710-4f53-9dbb-6cc4bd1f24ec" class="bulleted-list"><li style="list-style-type:disc">However, third-party tools like AutoIT, Robot, etc can be integrated with Selenium to<br/>handle pop-ups and other Windows-based features<br/></li></ul></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">20. How to take screenshots in WebDriver?</summary><div class="indented"><p id="9e325af4-a6db-4e03-8d2c-0953bf89e1f7" class=""><strong>TakeScreenshot </strong>interface can be used to take screenshots in WebDriver.<br/><br/><strong>getScreenshotAs()</strong> method can be used to save the screenshot</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0c511531-8dcf-4f90-88a3-e0ccc69b7531" class="code"><code class="language-Java">File scrFile = ((TakeScreenshot)driver).getScreenshotAs(outputType.FILE);</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">21. Can you type in a textbox without using sendKeys()?</summary><div class="indented"><p id="f27b4077-796a-4a50-85c4-a3015423b198" class="">Yes! Text can be entered into a textbox using JavaScriptExecutor</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="08cffe84-6f52-4027-a973-e31d681a79c5" class="code"><code class="language-Java">JavascriptExecutor jse = (JavascriptExecutor) driver;
+jse.executeScript(document.getElementById(&#x27;email&#x27;).value=&quot;abc.efg@xyz.com&quot;);</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">22. How to select a value from a dropdown in Selenium WebDriver?</summary><div class="indented"><p id="76088900-6f14-4547-90b6-11cad73f0cb4" class="">Select class in WebDriver is used for selecting and deselecting options in a dropdown<br/><br/></p><p id="06d8e253-e010-41e6-9ec2-4700ee2a254c" class="">The objects of Select type can be initialized by passing the dropdown webElement as<br/>parameter to its constructor.<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4ab44b25-a496-479d-8b1f-da403a745399" class="code"><code class="language-Java">WebElement testDrop = driver.findElement(By.id(&quot;testingDropdom&quot;));
+Select dropdown = new Select(testDrop);</code></pre><p id="9e933a88-a519-4a07-a70a-f90ce3ed9507" class="">WebDriver offers three ways to select from a dropdown:</p><p id="eefc8907-9c82-4898-b094-d51e3aead66e" class=""><br/> 1.  selectBylndex: Selection based on index starting from 0<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="963e82ee-1aaa-45d6-88ac-6ae4790b5c81" class="code"><code class="language-Java">dropdown.selectByIndex(5);</code></pre><ol type="1" id="4fd7f11e-de51-42ac-bd26-7afda9f17fc7" class="numbered-list" start="2"><li>selectByValue: Selection based on value</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6cb112ae-c185-448f-b34a-2c7bb4ca3733" class="code"><code class="language-Java">dropdown.selectByValue(&quot;Books&quot;);</code></pre><ol type="1" id="b79cdc53-0867-42bf-b703-7256fa615b2c" class="numbered-list" start="3"><li>selectByVisibleText: Selection of option that displays text matching the given argument</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f039d5f2-3d1f-4d71-8b5d-9f67c79d7c6f" class="code"><code class="language-Java">dropdown.selectByVisibleText(&quot;The Alchemist&quot;);</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">23. What does the switchTo() command do?</summary><div class="indented"><p id="bcc0da38-7d49-49fe-8dcc-bb43d4600cb0" class=""><strong>switchTo()</strong> command is used to switch between windows within the application. Every window instantiated by the WebDriver is given a unique alphanumeric value called <strong>&quot;Window Handle&quot;</strong></p><p id="235b80cb-560f-4ade-976b-63889b9ff95d" class="">Get the <strong>window handle </strong>of the window you wish to switch to</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="dc3a72ef-7e27-464d-8e0c-07d959a720e9" class="code"><code class="language-Java">String handle = driver.getWindowHandle();</code></pre><p id="33536129-4c05-4a37-b4c2-92d2466c423b" class="">Switch to the desired window</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="115633e3-ec98-46f7-8ca6-306a1ac487d6" class="code"><code class="language-Java">driver.switchTo().window(handle);</code></pre><p id="39c55af0-1002-467e-9511-e246108e9f63" class="">Alternatively</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="15d67d39-ea1e-4a4c-99f7-d51ad229e9de" class="code"><code class="language-Java">for (String handle = driver.getwindowHandles()){
+	driver.switchTo().window(handle);
+}</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">24. How to upload a file in Selenium WebDriver?</summary><div class="indented"><p id="ee3c2b8e-992a-4ff9-baeb-40d22e16e884" class="">Using <strong>sendkeys()</strong> method, we could easily achieve this. Locate the text box and set the file path using <strong>sendkeys()</strong> and click on submit button</p><p id="f996b8ce-f725-452f-a771-db6aa61cede7" class="">Locate the browse button</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="cfe76712-0f8d-44cc-8d03-c9115a648990" class="code"><code class="language-Java">WebElement browse = driver.findElement(By.id(&quot;uploadfile&quot;));</code></pre><p id="c78884f7-684e-470c-b18b-a38047027695" class="">Pass the path of the file to be uploaded using sendKeys method</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4b38929c-b996-4aeb-b192-c7d9e2c19499" class="code"><code class="language-Java">browse.sendKeys(&quot;D:\\SeleniumInterview\\uploadFile.txt&quot;);</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">25. How to set browser window size in WebDriver?</summary><div class="indented"><p id="528483c1-13b1-460e-a4b7-47e9c0cf24b9" class="">The window size can be <strong>maximized</strong>,<strong> set </strong>or<strong> resized</strong></p><p id="c7ad9d2e-83cf-497c-b83c-bc3da3c2e03d" class="">To <strong>maximize</strong> the window</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="14e1a928-3fd6-4afe-8912-1738aec5107e" class="code"><code class="language-Java">driver.manage().window().maximize();</code></pre><p id="e7481e86-d360-48ac-ac22-886111e2fd3a" class="">To <strong>set</strong> the window size</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="dfec746f-6712-4158-929a-d4332876f080" class="code"><code class="language-Java">Dimension D  = new Dimension (400, 600);
+driver.manage().window().setSize(D);</code></pre><p id="4e74ab02-f1c0-4f4d-9afa-2f1a85762005" class="">Alternatively, Window size can be reset using JavaScriptExecutor</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9d7fe11a-8553-4391-8a14-156303e76194" class="code"><code class="language-Java">((JavascriptExecutor)driver).executescript(&quot;window.resizeTo(1024, 768)&quot;);</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">26. When do we use findElement() and findElements()?</summary><div class="indented"><p id="d5739774-d241-4d04-8358-c0fa9b483b4b" class=""><strong>findElement() </strong>is used to find the first element in the current web page matching to the specified locator value. Only first matching element would be fetched.</p><p id="c0ebeacc-b836-4d63-8135-7b87b943017c" class="">General syntax for <strong>findElement()</strong>:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c79bcd9b-6fae-43a8-88b3-b5f93bb6e1af" class="code"><code class="language-Java">WebElement element = driver.findElement(By.id(example));</code></pre><p id="dacf70d1-12f4-4fab-96cd-16c0787ed0ad" class="">
+</p><p id="9428c780-d12e-4fe7-abb4-9457cf290b46" class=""><strong>findElements()</strong> is used to find all the elements in the current web page matching to the specified locator value. All the matching elements would be fetched and stored in the list of Web elements.</p><p id="97f995bc-9ff9-4494-a46b-4e767277f142" class="">General syntax <strong>findElements()</strong>:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f6fdebed-77d6-42c2-8272-a77fe9d016ce" class="code"><code class="language-Java">List &lt;WebElement&gt; elementList = driver.findElements(By.id(example));</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">27. What is pause on exception in Selenium IDE?</summary><div class="indented"><p id="e15742cf-0560-4bbd-9cfc-2279a94c509d" class="">The user can use this feature to handle exceptions by clicking the pause icon on the top right corner of the IDE. </p><p id="02928883-eac0-4232-b562-7d3f47b99c85" class="">When the script finds an exception, it pauses at that particular statement and enters a debug mode. The entire test case does not fail and hence the user can rectify the error immediately</p><figure id="f542f727-e57c-4ae3-bce1-c15e170ad766" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2012.png"><img style="width:1460px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2012.png"/></a></figure></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">28. How to login into any site if it is showing an Authentication Pop-Up for Username and Password?</summary><div class="indented"><figure id="16eb12ce-2661-4e91-83cb-3b07ea16ab68" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2013.png"><img style="width:680px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2013.png"/></a></figure><p id="cecd1266-4aab-43b3-9952-487bc9c8f012" class="">To handle authentication pop-ups, we first verify its appearance and then handle them using explicit wait command</p><p id="affcd46e-cd28-4e5c-b760-e1a07aff6f3d" class="">Use the explicit wait command</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bdbe3d73-1c47-4427-8f0a-69208cfd766c" class="code"><code class="language-Java">WebDriverWait wait : = new WebDriverWait(driver, 10);</code></pre><p id="292dc420-caa2-4424-8bfd-348ec02ca7c2" class="">Alert class is used to verify the alert</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="30cb0048-2f8d-4dc1-8880-15caca3b0cb4" class="code"><code class="language-Java">Alert alert = wait.until(ExpectedConditions.alertIsPresent());</code></pre><p id="b9e3c152-5aa6-418a-ac5f-6ba8ff2b322e" class="">Once verified, provide the credentials</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2e1b823e-6180-4684-ad3b-02d962c562ec" class="code"><code class="language-Java">alert.authenticateUsing(new UserAndPassword(&lt;username&gt;, &lt;password&gt;));</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">29. What is the difference between single and double slash in Xpath?</summary><div class="indented"><p id="a2fc7ec1-255a-481f-8227-0cc44c4a499d" class=""><strong>Single slash</strong> is used to create Xpath with <strong>absolute path</strong> i.e. the xpath would be created to start selection from the start node.</p><p id="788931e6-1835-47bd-86e1-61e2b579206c" class="">Example:</p><p id="03cc5a3e-6857-4dc7-b8b9-aba86c20d197" class=""><code>/html/body/div[2]/div[1]/div[1]/a</code></p><p id="6f75e882-a04f-4ae8-8778-9d193472309e" class="">
+</p><p id="a807f2b1-43b0-4078-ae9f-d54b51718fb9" class=""><strong>Double slash</strong> is used to create Xpath with <strong>relative path </strong>i.e. the xpath would be created to start selection from anywhere within the document.</p><p id="a34a6f1a-e9e0-453f-bdcd-50f424a72783" class="">Example:</p><p id="03cc417a-c8e2-44d3-9c86-ebaca28e5880" class=""><code>//div[class:fqa-logo&quot;//a</code></p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">30. How do you find broken links in Selenium WebDriver?</summary><div class="indented"><p id="50269751-0ea1-44e2-a240-23f51e3c074f" class="">When we use <strong>driver.get()</strong> method to navigate to a URL, it will respond with a status of <strong>200 - OK.</strong> It denotes that the link is working and it has been obtained. If any other status is obtained, then it is an indication that the link is broken.</p><p id="c8ed0ee7-fe35-4d56-a80c-551104b70ee3" class="">Some of the HTTP status codes are :<br/>200 - valid Link<br/>404 - Link Not Found<br/>400 - Bad Request<br/>401 - Unauthorized<br/>500 - Internal error<br/></p><p id="e197fba0-81ec-4736-a4e2-9dd54589856e" class="">We first obtain the links from the web application and individually get their status.</p><p id="6770ec68-946e-4f81-be6a-2295d49b998f" class="">Navigate to the interested webpage for e.g. www.amazon.com</p><p id="a7b79a97-d21a-4b5d-a792-f89af842cfec" class="">Collect all the links from the webpage. All the links are associated with the Tag &#x27;a&#x27;</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="52fb334e-992e-492d-863e-72e451fbfbed" class="code"><code class="language-Java">List&lt;WebElement&gt; links = driver.findElements(By.tagName(&quot;a&quot;));</code></pre><p id="9f88f680-a8da-4804-a6e0-d3450fe94ddf" class="">Create a list of type WebElement to store all the Link elements in to it.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6007e7b0-1d76-4372-a0a9-a25d4217a081" class="code"><code class="language-Java">for (int i=0; i&lt;links. size(); i++) {
+	WebElement element = links.get(i);
+	String url=element.getAttribute(&quot;href&quot;);
+	verifyLink(url); 
+}</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">MCQ</summary><div class="indented"><figure id="52d1bca6-383c-4de6-a2d1-d81ba45d98be" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2014.png"><img style="width:2002px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2014.png"/></a></figure><figure id="ff511f62-ed55-4af3-b2dc-d037089dbcd6" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2015.png"><img style="width:1966px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2015.png"/></a></figure><figure id="e7b12a25-1bd4-41d7-acf8-56a7ee6eced0" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2016.png"><img style="width:1962px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2016.png"/></a></figure><figure id="0d4009b4-96cc-434f-b9a8-fa2fa07e7de8" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2017.png"><img style="width:1960px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2017.png"/></a></figure><figure id="fea5057b-ffad-4e6b-bbfd-b65e15e3a9f1" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2018.png"><img style="width:1960px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2018.png"/></a></figure><figure id="5f39c0c2-aa37-4418-888c-7e95786bb7a6" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2019.png"><img style="width:1980px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2019.png"/></a></figure><figure id="cdeaf729-5fa0-416d-8052-d2b6f5fdd4d2" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2020.png"><img style="width:1944px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2020.png"/></a></figure><figure id="0bac86e9-0e12-4b5d-b768-c222fec9695b" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2021.png"><img style="width:1956px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2021.png"/></a></figure><figure id="ad0807a7-535a-4f77-ba26-708b20c39afd" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2022.png"><img style="width:1972px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2022.png"/></a></figure><figure id="82414345-812f-4703-a7a7-34491e5fa7ff" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2023.png"><img style="width:1966px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2023.png"/></a></figure><figure id="f2211fab-12df-4d84-8c5b-4b8678bdf6fb" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2024.png"><img style="width:652px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2024.png"/></a></figure><figure id="b8dd6c2b-b657-4036-a4b9-082917ec7c6e" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2025.png"><img style="width:1964px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2025.png"/></a></figure><figure id="c3744016-7ba9-4ef9-aa2a-1e6af22c03d3" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2026.png"><img style="width:1974px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2026.png"/></a></figure><figure id="7b673e25-af31-4bc6-9d23-a24117300183" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2027.png"><img style="width:1940px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2027.png"/></a></figure><figure id="28be26b2-c28c-4a9f-b715-dc27e2712a09" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2028.png"><img style="width:1962px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2028.png"/></a></figure><figure id="0a2f1de1-9102-4e29-9eea-2b522039454b" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2029.png"><img style="width:1962px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2029.png"/></a></figure><figure id="dac4bed5-1638-4aa1-b619-60a98044c4c3" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2030.png"><img style="width:1954px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2030.png"/></a></figure><figure id="d101aacf-9fe1-4f39-9437-0366e4f7a20f" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2031.png"><img style="width:1978px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2031.png"/></a></figure><figure id="1c1e7d0a-092d-4356-a9bd-ad4c80001c38" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2032.png"><img style="width:1964px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2032.png"/></a></figure><figure id="40acfa40-f3ad-428e-82eb-3c27f892609c" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2033.png"><img style="width:1980px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2033.png"/></a></figure><figure id="363e37c6-28d5-4bb9-b3dd-7945678e01ac" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2034.png"><img style="width:1944px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2034.png"/></a></figure><figure id="66d701ba-5a2f-417b-9118-1f9701908a48" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2035.png"><img style="width:1972px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2035.png"/></a></figure><figure id="b03b2c7c-b972-48ce-bd17-8c11c06da2f0" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2036.png"><img style="width:1970px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2036.png"/></a></figure><figure id="1af62616-8d6e-4f61-8a62-6cedff6ca492" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2037.png"><img style="width:1952px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2037.png"/></a></figure><figure id="1509ca69-0a39-4956-bb80-d3315212a4f3" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2038.png"><img style="width:1974px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2038.png"/></a></figure><figure id="981cc1d3-0e89-41c7-8f43-1b50be71e17f" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2039.png"><img style="width:1956px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2039.png"/></a></figure><figure id="cef03d26-b1fd-402b-b93d-3b82c880ec56" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2040.png"><img style="width:1966px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2040.png"/></a></figure><figure id="bcd1f143-c7f8-48cd-a9cd-043a0420be27" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2041.png"><img style="width:1968px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2041.png"/></a></figure><figure id="076b94b3-5ece-4857-9e7e-a70d09a0ec23" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2042.png"><img style="width:1968px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2042.png"/></a></figure><figure id="49ddc96a-8aa0-4876-be11-46cdf985e9d8" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2043.png"><img style="width:1974px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2043.png"/></a></figure><figure id="27ef3466-0a63-4882-a2ab-82c9385747d9" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2044.png"><img style="width:1966px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2044.png"/></a></figure><figure id="3b4d84bb-4bec-487f-ba54-cf1e27b36b44" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2045.png"><img style="width:1974px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2045.png"/></a></figure><figure id="988a3ce9-5662-4fdb-8b46-e68755aa9dd1" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2046.png"><img style="width:1978px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2046.png"/></a></figure><figure id="c3ab554f-c67f-4f61-90bc-0ec81d381de5" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2047.png"><img style="width:1908px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2047.png"/></a></figure><figure id="c33ba5dd-65ce-480d-aa96-0c8ebfbd205a" class="image"><a href="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2048.png"><img style="width:1926px" src="Selenium%20Interview%20Q&amp;A%20428039beacf64ffb9405eb3bcd1ec5f3/Untitled%2048.png"/></a></figure></div></details><p id="8f04dbb0-bf04-472d-b9ba-82a8f53606f3" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,2 +1,2 @@
 # Selenium Interview Question & Answer
-### Link - https://www.iyashvasani.github.io/Selenium-Interview-QnA/
+### Link - https://iyashvasani.github.io/Selenium-Interview-QnA/
